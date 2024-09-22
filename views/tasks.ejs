@@ -3,11 +3,20 @@
     <header>
         <a href="/addTasks">Create Tasks</a>
     </header>
-    <section>
         <article>
-            <h4>TITLE</h4>
-            <p>description</p>
+            <section>
+
+                <% tasks.forEach(task =>{ %>
+                <h4><%= task.title %></h4>
+                <p><%= task.description %></p>
+                <div></div>
+                    <a href="/deleteTask">EXCLUIR</a>
+                    <a href="/editTask">EDITAR</a>
+                </div>
+                <% }) %>
+            </section>
+            
         </article>
-    </section>
 </body>
+
 </html>
