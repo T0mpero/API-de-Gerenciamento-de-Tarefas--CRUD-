@@ -1,10 +1,19 @@
 const express = require('express');
-const server = express();
-const routes = require('./routes/routes')
-const routes = require('rou')
+const app = express();
+const routes = require('./routes/routes');
+const bodyParser = require('body-parser');
 
 const port = 80;
 
-server.get('/', routes)
+//get body
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
-server.listen(port, err =>console.log('Servidor Rodando em: http://localhost:'+ port));
+//get routes from './routes/routes';
+app.use('/', routes);
+
+//set to rendering ejs files;
+app.set('view engine', 'ejs');
+app.use(express.static('./public'));
+
+app.listen(port, err => console.log('Servidor Rodando em: http://localhost:'+ port));

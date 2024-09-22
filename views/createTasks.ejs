@@ -1,0 +1,13 @@
+<%- include ('./partials/header.ejs') %>
+
+<body>
+    <form action="/createTask" method="post">
+        <label for="title">TITLE:</label>
+        <textarea name="title" placeholder="Your title..."></textarea>
+        <br>
+        <label for="desc">DESCRIPTION:</label>
+        <textarea name="desc" placeholder="Your description..."></textarea>
+        <br>
+        <button type="submit">SEND</button>
+    </form>
+</body>
