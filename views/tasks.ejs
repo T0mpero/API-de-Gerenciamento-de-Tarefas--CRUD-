@@ -1,19 +1,20 @@
 <%- include ('./partials/header.ejs') %>
 <body>
+    <%- include ('./partials/navbar.ejs') %>
     <header>
-        <a href="/addTasks">Create Tasks</a>
+        <a href="/addTasks" class="btn btn-success">CRIAR TAREFA</a>
     </header>
-        <section>
+        <section class="container">
             <% tasks.forEach(task =>{ %> 
-            <article>
-                <h4><%= task.title %></h4>
+            <article  class="card">
+                <h4 class="card-body"><%= task.title %></h4>
                 <p><%= task.description %></p>
-                <div></div>
+                <div id="buttons-form-task" class="card-footer">
                     <form action="/deleteTask/<%= task.id %>?_method=DELETE" method="POST">
-                        <button type="submit">EXCLUIR</button>
+                        <button type="submit" class="btn btn-danger">EXCLUIR</button>
                     </form>
                     <form action="/editTask/<%= task.id %>" method="get">
-                        <button type="submit">EDITAR</button>
+                        <button type="submit" class="btn btn-primary">EDITAR</button>
                     </form>
                 </div>
             </article>
@@ -24,4 +25,4 @@
   
 </body>
 
-</html>
+<%- include ('./partials/footer.ejs') %>

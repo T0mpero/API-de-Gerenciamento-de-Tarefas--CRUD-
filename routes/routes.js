@@ -1,10 +1,11 @@
 const Task = require('../db/CriarTask');
-const express = require('express')
+const express = require('express');
 const router = express.Router();
 
 
-// Buscar por tarefas no banco de dados e passá-las como um array
+// Rota para exibir todas as tarefas
 router.get('/', async (req, res) =>{
+    // Buscar por tarefas no banco de dados e passá-las como um array
     try {
         const tasks = await Task.find();
         res.render('tasks', {tasks});

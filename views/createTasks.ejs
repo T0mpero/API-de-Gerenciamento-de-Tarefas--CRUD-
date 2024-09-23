@@ -1,15 +1,20 @@
 <%- include ('./partials/header.ejs') %>
 
 <body>
-    <form action="/createTask" method="post">
-        <label for="title">TITLE:</label>
-        <textarea name="title" placeholder="Your title..."></textarea>
-        <br>
-        <label for="desc">DESCRIPTION:</label>
-        <textarea name="desc" placeholder="Your description..."></textarea>
-        <br>
-        <button type="submit">SEND</button>
+    <%- include ('./partials/navbar.ejs') %>
+    <form action="/createTask" method="post" class="form-control">
+        <div class="card">
+            <label for="title">TITLE:</label>
+            <input type="text" name="title" placeholder="Your title..." class="form-control">
 
+            <br>
+                <label for="desc">DESCRIPTION:</label>
+            <input type="text" name="desc" placeholder="Your description..." class="form-control">
+
+            
+            <br>
+            <button type="submit" class="btn btn-success">SEND</button>
+        </div>
     </form>
 </body>
-</html>
+<%- include ('./partials/footer.ejs') %>

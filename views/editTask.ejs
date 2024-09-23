@@ -1,21 +1,21 @@
 <%- include ('./partials/header.ejs') %>
 
 <body>
-    <form action="/editedTask/<%= task._id %>" method="post">
-        <label for="lastTitle">Ultimo Título:</label>
-        <h4><%= task.title %></h4>
-        <label for="lastDesc">Ultima Descrição:</label>
-        <h4><%= task.description %></h4>
-
-
-        <br>
+    <%- include ('./partials/navbar.ejs') %>
+    <section class="card">
+        <label for="lastTitle" class="card-text">Ultimo Título:</label>
+        <h4 class="card-title"><%= task.title %></h4>
+        <label for="lastDesc" class="card-text">Ultima Descrição:</label>
+        <h4 class="card-title"><%= task.description %></h4>
+    </section>
+    <form action="/editedTask/<%= task._id %>" method="post" class="form-control">
         <label for="newTitle">Novo Título:</label>
-        <textarea name="newTitle"></textarea>
+        <input type="text" name="newTitle"  class="form-control">
         <br>
         <label for="newDesc">Novo Descrição:</label>
-        <textarea name="newDesc"></textarea>
+        <input type="text" name="newDesc"  class="form-control">
 
-        <button type="submit">SALVAR</button>
+        <button type="submit" class="btn btn-success">SALVAR</button>
     </form>
 </body>
-</html>
+<%- include ('./partials/footer.ejs') %>
