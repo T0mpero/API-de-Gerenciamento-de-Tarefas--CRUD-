@@ -1,6 +1,21 @@
 <%- include ('./partials/header.ejs') %>
 
 <body>
-    EDITAR
+    <form action="/editedTask/<%= task._id %>" method="post">
+        <label for="lastTitle">Ultimo Título:</label>
+        <h4><%= task.title %></h4>
+        <label for="lastDesc">Ultima Descrição:</label>
+        <h4><%= task.description %></h4>
+
+
+        <br>
+        <label for="newTitle">Novo Título:</label>
+        <textarea name="newTitle"></textarea>
+        <br>
+        <label for="newDesc">Novo Descrição:</label>
+        <textarea name="newDesc"></textarea>
+
+        <button type="submit">SALVAR</button>
+    </form>
 </body>
 </html>

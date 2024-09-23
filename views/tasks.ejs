@@ -12,7 +12,9 @@
                     <form action="/deleteTask/<%= task.id %>?_method=DELETE" method="POST">
                         <button type="submit">EXCLUIR</button>
                     </form>
-                    <a href="/editTask">EDITAR</a>
+                    <form action="/editTask/<%= task.id %>" method="get">
+                        <button type="submit">EDITAR</button>
+                    </form>
                 </div>
             </article>
             <% }); %>
