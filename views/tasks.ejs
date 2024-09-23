@@ -3,20 +3,23 @@
     <header>
         <a href="/addTasks">Create Tasks</a>
     </header>
-        <article>
-            <section>
-
-                <% tasks.forEach(task =>{ %>
+        <section>
+            <% tasks.forEach(task =>{ %> 
+            <article>
                 <h4><%= task.title %></h4>
                 <p><%= task.description %></p>
                 <div></div>
-                    <a href="/deleteTask">EXCLUIR</a>
+                    <form action="/deleteTask/<%= task.id %>?_method=DELETE" method="POST">
+                        <button type="submit">EXCLUIR</button>
+                    </form>
                     <a href="/editTask">EDITAR</a>
                 </div>
-                <% }) %>
-            </section>
+            </article>
+            <% }); %>
+
+        </section>
             
-        </article>
+  
 </body>
 
 </html>
