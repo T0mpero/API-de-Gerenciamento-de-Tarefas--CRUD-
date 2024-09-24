@@ -1,14 +1,7 @@
-# API de Gerenciamento de Tarefas (CRUD)
- Este é um sistema simples de gerenciamento de tarefas, onde os usuários podem criar, ler, atualizar e deletar tarefas. 
+# 📋 Gerenciador de Tarefas
+ Este é um sistema simples de gerenciamento de tarefas, onde os usuários podem criar, ler, atualizar e deletar tarefas.
 
-## Tecnologias Utilizadas
-
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-
-
+ 
 ## Funcionalidades
 
 - Criar, editar, deletar e listar tarefas
@@ -43,7 +36,7 @@
 
 No arquivo /db/Connect.js, mude a variável 'mongoUrl' para o link q o seu MongoDB disponibiliza;
 
-### 👩‍💻 Tecnologias utilizadas
+## 👩‍💻 Tecnologias utilizadas
 <hr>
 <div>
 <img align="center" alt="Node.js" src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" /> - Ambiente de execução Javascript fora do navegador.
