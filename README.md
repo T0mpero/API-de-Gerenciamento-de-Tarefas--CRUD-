@@ -17,7 +17,7 @@
 
 ## 💿 Instalação
 
-# 1 
+### 1 Baixar Node.Js
 ⚠️ Você precisará ter Node.Js instalado na sua máquina.
 <div>
  <a href="https://nodejs.org/pt">
@@ -25,8 +25,8 @@
  </a>
 </div>
 
-# 2
- Clone o repositório através do comando abaixo:
+### 2 Clonar o repositório
+ Clone o repositório para a sua máquina através do comando abaixo:
 
    ```bash
    git clone https://github.com/T0mpero/API-de-Gerenciamento-de-Tarefas--CRUD-.git
