@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose');
 //url conectar ao banco
-const mongoUrl = "YOUR URL";
+const mongoUrl = "COLOCAR SUA URL";
 
 
 const connect = mongoose.connect(mongoUrl).then(()=> console.log('conectado ao MongoDB'))

@@ -37,11 +37,30 @@ router.get('/editTask/:id', async(req, res)=>{
         res.status(500).send('Erro no servidor');
 }});
 
+// Rota do procurar Tarefa pelo input
+router.get('/pesquisaTask', async (req, res) => {
+    try {
+        const { searchTask } = req.query; // Pegando o valor da busca do campo de pesquisa
+
+        // Criando um filtro de busca utilizando regex para buscar no título ou descrição
+        const tasks = await Task.find({
+            $or: [
+                { title: { $regex: searchTask, $options: 'i' } }, // Busca por título
+                { description: { $regex: searchTask, $options: 'i' } } // Busca por descrição
+            ]
+        });
+
+        res.render('tasks', { tasks }); // Renderizando a página com as tarefas filtradas
+    } catch (err) {
+        res.status(500).send('Erro ao buscar tarefas');
+    }
+});
+
+
 // Rota para criar uma nova tarefa
 router.post('/createTask', async (req, res) =>{
-    let title = req.body.title;
+    let title = req.body.title.toUpperCase();
     let desc = req.body.desc;
-
     const newTask = new Task({
         title: title,
         description : desc,

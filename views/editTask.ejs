@@ -10,10 +10,10 @@
     </section>
     <form action="/editedTask/<%= task._id %>" method="post" class="form-control">
         <label for="newTitle">Novo Título:</label>
-        <input type="text" name="newTitle"  class="form-control">
+        <input type="text" name="newTitle"  class="form-control" required>
         <br>
         <label for="newDesc">Novo Descrição:</label>
-        <input type="text" name="newDesc"  class="form-control">
+        <input type="text" name="newDesc"  class="form-control" required>
 
         <button type="submit" class="btn btn-success">SALVAR</button>
     </form>
