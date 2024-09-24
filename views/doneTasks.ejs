@@ -1,18 +1,12 @@
 <%- include ('./partials/header.ejs') %>
 <body>
     <%- include ('./partials/navbar.ejs') %>
-    <header>
-        <form action="/pesquisaTask" method="get">
-            <input type="text" name="searchTask" placeholder="Pesquisar..." id="searchTask" autocomplete="off">
-            <button type="submit"><i class="bi bi-search"></i></button>
-        </form>
-            
+    <header>            
         <a href="/addTasks" class="btn btn-success">CRIAR TAREFA</a>
-        <a href="/doneTasks" class="btn btn-primary">TAREFAS FEITAS</a>
     </header>
         <section class="container">
             <% tasks.forEach(task =>{ %> 
-            <article  class="card <%= task.statusTask ? 'done' : '' %>">
+            <article  class="card done">
                 <h4 class="card-body"><%= task.title %></h4>
                 <p><%= task.description %></p>
                 <div id="buttons-form-task" class="card-footer">
@@ -22,8 +16,8 @@
                     <form action="/editTask/<%= task.id %>" method="get">
                         <button type="submit" class="btn btn-primary">EDITAR</button>
                     </form>
-                    <form action="/doneTask/<%= task.id %>" method="post">
-                        <button type="submit" class="btn btn-success">CONCLUÍDA</button>
+                    <form action="/undoneTask/<%= task.id %>" method="post">
+                        <button type="submit" class="btn btn-success">À FAZER</button>
                     </form>
                 </div>
             </article>

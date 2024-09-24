@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', async (req, res) =>{
     // Buscar por tarefas no banco de dados e passá-las como um array
     try {
-        const tasks = await Task.find();
+        const tasks = await Task.find({statusTask : false});
         res.render('tasks', {tasks});
     } catch (err) {
         console.error('Erro ao buscar tarefas:', err);
@@ -20,6 +20,19 @@ router.get('/', async (req, res) =>{
 router.get('/addTasks', (req, res)=>{
     res.render('createTasks');
 });
+
+// Rota para exibir as tarefas feitas
+router.get('/doneTasks', async (req, res) =>{
+    try {
+        const tasks = await Task.find({statusTask : true});
+        res.render('doneTasks', {tasks});
+    } catch (err) {
+        console.error('Erro ao buscar tarefas:', err);
+        res.status(500).send('Erro no servidor');
+    }
+    
+});
+
 
 // Rota para procurar a task q o usuário deseja editar
 router.get('/editTask/:id', async(req, res)=>{
@@ -40,17 +53,17 @@ router.get('/editTask/:id', async(req, res)=>{
 // Rota do procurar Tarefa pelo input
 router.get('/pesquisaTask', async (req, res) => {
     try {
-        const { searchTask } = req.query; // Pegando o valor da busca do campo de pesquisa
+        const { searchTask } = req.query;
 
         // Criando um filtro de busca utilizando regex para buscar no título ou descrição
         const tasks = await Task.find({
             $or: [
                 { title: { $regex: searchTask, $options: 'i' } }, // Busca por título
-                { description: { $regex: searchTask, $options: 'i' } } // Busca por descrição
+                { description: { $regex: searchTask, $options: 'i' } }
             ]
         });
 
-        res.render('tasks', { tasks }); // Renderizando a página com as tarefas filtradas
+        res.render('tasks', { tasks }); 
     } catch (err) {
         res.status(500).send('Erro ao buscar tarefas');
     }
@@ -61,9 +74,11 @@ router.get('/pesquisaTask', async (req, res) => {
 router.post('/createTask', async (req, res) =>{
     let title = req.body.title.toUpperCase();
     let desc = req.body.desc;
+    let statusTask = req.body.statusTask;
     const newTask = new Task({
         title: title,
         description : desc,
+        statusTask : statusTask
     });
     try{await newTask.save(); res.redirect('/')}
     catch(err) {console.error('Erro ao salvar task', err)};
@@ -88,6 +103,23 @@ router.post('/editedTask/:id', async (req, res) =>{
     }
 
 });
+
+// Rota para marcar uma tarefa como concluida
+router.post('/doneTask/:id', async (req, res) =>{
+    const updatedStatus = {
+        statusTask : true
+    }
+    try{
+        const result = await Task.updateOne({_id : req.params.id}, updatedStatus);
+        if (result.nModified === 0 ){
+            return res.status(404).send('Tarefa não encontrada ou não foi alterada.');
+        }
+        res.redirect('/');
+    } catch (err){
+        console.error('Erro ao editar status da tarefa:', err);
+        res.status(500).send('Erro no servidor');
+    }
+})
 
 // Rota para excluir uma tarefa
 router.delete('/deleteTask/:id', async (req, res) => {

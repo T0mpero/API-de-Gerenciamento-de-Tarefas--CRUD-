@@ -4,14 +4,17 @@
     <%- include ('./partials/navbar.ejs') %>
     <form action="/createTask" method="post" class="form-control">
         <div class="card">
-            <label for="title">TITLE:</label>
+            <label for="title">TÍTULO:</label>
             <input type="text" name="title" placeholder="Your title..." class="form-control" maxlength="60" required>
-
             <br>
-                <label for="desc">DESCRIPTION:</label>
+            <label for="desc">DESCRIÇÃO:</label>
             <input type="text" name="desc" placeholder="Your description..." class="form-control"  maxlength="150">
-
-            
+            <br>
+            <label for="">STATUS DA TAREFA</label>
+            <select name="statusTask" id="" style="text-align: center;">
+                <option value="true">FEITA</option>
+                <option value="false">A FAZER</option>
+            </select>
             <br>
             <button type="submit" class="btn btn-success">SEND</button>
         </div>

@@ -34,3 +34,7 @@ article{
 section{
     margin: 10px 0px 10px 0px;
 }
+
+.done{
+    background-color: #f0e4e4;
+}

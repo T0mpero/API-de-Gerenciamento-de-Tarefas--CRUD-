@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const connectDb = require('./db/Connect');
 
 
-const port = 80;
+const port = 3000;
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
