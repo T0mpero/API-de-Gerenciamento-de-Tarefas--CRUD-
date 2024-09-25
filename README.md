@@ -34,7 +34,7 @@
 
 ### 4 Mudar partes do código:
 
-No arquivo /db/Connect.js, mude a variável 'mongoUrl' para o link q o seu MongoDB disponibiliza;
+No arquivo /db/Connect.js, mude a variável 'mongoUrl' para o link que o seu MongoDB disponibiliza;
 
 ## 👩‍💻 Tecnologias utilizadas
 <hr>
