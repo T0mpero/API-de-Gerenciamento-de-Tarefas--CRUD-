@@ -22,7 +22,7 @@
  📂 Clone o repositório para a sua máquina através do comando abaixo:
 
    ```bash
-   git clone https://github.com/T0mpero/API-de-Gerenciamento-de-Tarefas--CRUD-.git
+   git clone https://github.com/T0mpero/Gerenciamento-de-Tarefas
    ```
 
 ### 3 Instalar as dependências
