@@ -119,7 +119,24 @@ router.post('/doneTask/:id', async (req, res) =>{
         console.error('Erro ao editar status da tarefa:', err);
         res.status(500).send('Erro no servidor');
     }
-})
+});
+
+// Rota para marcar tarefa como à fazer;
+router.post('/undoneTask/:id', async (req, res) =>{
+    const updatedStatus = {
+        statusTask : false
+    }
+    try{
+        const result = await Task.updateOne({_id : req.params.id}, updatedStatus);
+        if (result.nModified === 0 ){
+            return res.status(404).send('Tarefa não encontrada ou não foi alterada.');
+        }
+        res.redirect('/');
+    } catch (err){
+        console.error('Erro ao editar status da tarefa:', err);
+        res.status(500).send('Erro no servidor');
+    }
+});
 
 // Rota para excluir uma tarefa
 router.delete('/deleteTask/:id', async (req, res) => {
